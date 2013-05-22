@@ -1,7 +1,12 @@
 {% if latest_poll_list %}
     <ul>
     {% for poll in latest_poll_list %}
-        <li><a href="/polls/{{ poll.id }}/">{{ poll.question }}</a></li>
+        <!-- #<li><a href="/polls/{{ poll.id }}/">{{ poll.question }}</a></li>-->
+		<!-- #This allows you to change the url in one location i.e urls.py rather than in each of the html templates
+		Note the use of the polls namespace which is register in the root urls.py file
+		-->
+		
+        <li><a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
